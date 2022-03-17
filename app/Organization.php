@@ -14,4 +14,9 @@ class Organization extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 }
