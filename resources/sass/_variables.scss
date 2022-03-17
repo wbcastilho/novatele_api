@@ -1,0 +1,90 @@
+.skin-purple-light .main-header .logo {
+    background-color: #043776;   
+}
+
+.skin-purple-light .main-header .navbar {    
+    background: linear-gradient(152deg, #043776,#004cd3, #3196f0, rgba(102,175,68,1));
+}
+
+.skin-purple-light .main-header .navbar .sidebar-toggle:hover {
+    background-color: #04316A;
+}
+
+.skin-purple-light .main-header .logo:hover {
+    background-color: #04316A;
+}
+
+.skin-purple-light .main-header .navbar .dropdown-menu li a {
+    color: #777; 
+}
+
+/*.skin-purple-light .main-header .navbar .dropdown-menu li a:hover {
+    color: #fff; 
+}*/
+
+.skin-purple-light .main-header .navbar .dropdown-menu > .active > a, .skin-purple-light .main-header .navbar .dropdown-menu > .active > a:hover, .skin-purple-light .main-header .navbar .dropdown-menu > .active > a:focus {
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #337ab7;
+    outline: 0;
+}
+
+.skin-purple-light .main-header .navbar .dropdown-menu > li > a:hover {
+    background-color: #e1e3e9;
+    color: #333;
+}
+
+.skin-purple-light .main-header .navbar .dropdown-menu > .divider {
+    background-color: #eee !important;
+}
+
+.main-header {   
+    box-shadow: 0px 0px 2px 0 #000;
+}
+
+b {
+    font-weight: normal;
+}
+
+.table-bordered > thead > tr > th, 
+.table-bordered > tbody > tr > th, 
+.table-bordered > tfoot > tr > th, 
+.table-bordered > thead > tr > td, 
+.table-bordered > tbody > tr > td, 
+.table-bordered > tfoot > tr > td {
+    border: 1px solid #ddd;
+}
+
+.user-header {   
+    background: linear-gradient(180deg, #043776,#004cd3, #3196f0);        
+}
+
+.modal-header {   
+    //background: linear-gradient(152deg, #043776,#004cd3, #3196f0); 
+    background: linear-gradient(152deg,#004cd3, #3196f0, rgba(102,175,68,1));   
+    color: #fff;
+}
+
+.login-page {      
+    background: linear-gradient(152deg,#a7a9aa, #afb0b0,#b3b4b5, #bbbbbc, #d5d5d5, #e1e2e2, #ededf1, #f0f0f4);   
+}
+
+.login-logo span b {
+    color:#213b74;
+    font-weight: 520;
+}
+
+.login-box-body, .register-box-body {    
+    box-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
+}
+
+.logo-mini img {
+    float: left;
+    width: 40px;
+    margin-top: 5px !important;
+    margin-left: 5px !important;
+}
+
+.logo-lf img {
+    float: left;   
+}
