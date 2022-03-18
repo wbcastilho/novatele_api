@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Container;
+use App\Organization;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,15 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Auth::routes();
+
+// TODO: Apagar depois, está sendo utilizado somente para testes
+Route::get('/containers', function(Request $request) {
+    $organizations = collect(Organization::all());
+    $containers = collect(Container::all());
+    $merged = $containers->concat($organizations);
+    $result = $merged->all();    
+    return($result);    
+})->name('containers');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
