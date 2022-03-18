@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Department;
 use App\Group;
 use App\Organization;
 
@@ -18,7 +19,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'organization_id', 'group_id'
+        'name', 
+        'email', 
+        'password', 
+        'organization_id', 
+        'group_id', 
+        'department_id'
     ];
 
     /**
@@ -47,5 +53,10 @@ class User extends Authenticatable
     public function group()
     {
         return $this->belongsTo('Group');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('Department');
     }
 }
