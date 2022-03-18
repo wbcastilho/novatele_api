@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\User;
 
 class Organization extends Model
 {
@@ -17,6 +18,6 @@ class Organization extends Model
 
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('User');
     }
 }
