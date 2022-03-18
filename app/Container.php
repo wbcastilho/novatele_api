@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\MeteringReader;
 use App\Organization;
 
 class Container extends Model
@@ -19,5 +20,10 @@ class Container extends Model
     public function organization()
     {
         return $this->belongsTo('Organization');
+    }
+
+    public function meteringReaders()
+    {
+        return $this->hasMany('MeteringReader');
     }
 }
