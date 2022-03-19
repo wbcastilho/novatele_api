@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Dashboard;
 use App\Organization;
 use App\User;
 
@@ -25,5 +26,10 @@ class Department extends Model
     public function users()
     {
         return $this->hasMany('User');
+    }
+
+    public function dashboards()
+    {
+        return $this->hasMany('Dashboard');
     }
 }
