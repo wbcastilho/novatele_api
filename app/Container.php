@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\MeteringReader;
 use App\Organization;
+use App\StatusReader;
 
 class Container extends Model
 {
@@ -25,5 +26,10 @@ class Container extends Model
     public function meteringReaders()
     {
         return $this->hasMany('MeteringReader');
+    }
+
+    public function statusReaders()
+    {
+        return $this->hasMany('StatusReader');
     }
 }
