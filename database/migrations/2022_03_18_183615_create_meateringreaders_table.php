@@ -13,7 +13,7 @@ class CreateMeateringreadersTable extends Migration
      */
     public function up()
     {
-        Schema::create('meteringreaders', function (Blueprint $table) {
+        Schema::create('metering_readers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->float('min_param', 6, 2)->nullable();
@@ -33,6 +33,6 @@ class CreateMeateringreadersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meteringreaders');
+        Schema::dropIfExists('metering_readers');
     }
 }

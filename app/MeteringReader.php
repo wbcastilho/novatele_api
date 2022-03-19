@@ -9,8 +9,6 @@ use App\Container;
 class MeteringReader extends Model
 {
     use SoftDeletes;
-
-    protected $table = 'meteringreaders';
     
     protected $fillable =[
         'name', 'min_param', 'max_param', 'unity', 'parent_id'        
