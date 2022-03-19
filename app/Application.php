@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Organization;
+use App\Service;
 
 class Application extends Model
 {
@@ -19,5 +20,10 @@ class Application extends Model
     public function organization()
     {
         return $this->belongsTo('Organization');
+    }
+
+    public function services()
+    {
+        return $this->hasMany('Service');
     }
 }
