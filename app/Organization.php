@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Application;
 use App\Container;
 use App\Department;
 use App\User;
@@ -31,5 +32,10 @@ class Organization extends Model
     public function containers()
     {
         return $this->hasMany('Container');
+    }
+
+    public function applications()
+    {
+        return $this->hasMany('Application');
     }
 }
