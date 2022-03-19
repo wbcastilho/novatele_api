@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Application;
+use App\MeteringReader;
 use App\ServiceType;
 
 class Service extends Model
@@ -25,5 +26,10 @@ class Service extends Model
     public function type()
     {
         return $this->belongsTo('ServiceType');
+    }
+
+    public function meteringReaders()
+    {
+        return $this->hasMany('MeteringReader');
     }
 }

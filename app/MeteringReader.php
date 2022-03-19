@@ -5,13 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Container;
+use App\Service;
 
 class MeteringReader extends Model
 {
     use SoftDeletes;
     
     protected $fillable =[
-        'name', 'min_param', 'max_param', 'unity', 'parent_id'        
+        'name', 'min_param', 'max_param', 'unity', 'parent_id', 'service_id'        
     ];
 
     protected $dates = ['deleted_at'];
@@ -19,6 +20,11 @@ class MeteringReader extends Model
     public function parent()
     {
         return $this->belongsTo('Container');
+    }
+
+    public function service()
+    {
+        return $this->belongsTo('Service');
     }
 
 }
