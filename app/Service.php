@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Application;
 use App\MeteringReader;
 use App\ServiceType;
+use App\StatusReader;
 
 class Service extends Model
 {
@@ -31,5 +32,10 @@ class Service extends Model
     public function meteringReaders()
     {
         return $this->hasMany('MeteringReader');
+    }
+
+    public function statusReaders()
+    {
+        return $this->hasMany('StatusReader');
     }
 }
