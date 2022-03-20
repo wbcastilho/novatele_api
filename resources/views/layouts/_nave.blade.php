@@ -22,13 +22,13 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-fw fa-user"></i>            
-              <span class="hidden-xs">Welber</span>
+              <span class="hidden-xs">{{auth()->user()->name}}</span>
             </a> 
             <ul class="dropdown-menu">            
               <li class="user-header">                
                 <p>
-                  Welber
-                  <small>Root</small>                 
+                  {{auth()->user()->name}}
+                  <small>{{auth()->user()->group->name}}</small>                 
                 </p>                          
               </li>                          
               <li class="user-footer">

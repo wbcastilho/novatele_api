@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function group()
     {
-        return $this->belongsTo('Group');
+        return $this->belongsTo('App\Group');
     }
 
     public function department()

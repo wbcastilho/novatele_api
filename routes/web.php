@@ -15,11 +15,7 @@ use App\Organization;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-Auth::routes();
+//Auth::routes();
 
 // TODO: Apagar depois, está sendo utilizado somente para testes
 Route::get('/containers', function(Request $request) {
@@ -29,6 +25,11 @@ Route::get('/containers', function(Request $request) {
     $result = $merged->all();    
     return($result);    
 })->name('containers');
+
+// Rotas de autenticação
+Route::get('login', 'AuthController@index')->name('login');
+Route::post('login', 'AuthController@authenticate')->name('login'); 
+Route::post('logout', 'AuthController@logout')->name('logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
