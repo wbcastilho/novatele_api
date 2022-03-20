@@ -31,5 +31,8 @@ Route::get('login', 'AuthController@index')->name('login');
 Route::post('login', 'AuthController@authenticate')->name('login'); 
 Route::post('logout', 'AuthController@logout')->name('logout');
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth','prefix' => '/'], function(){
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('organizations', 'OrganizationController');
+}); 

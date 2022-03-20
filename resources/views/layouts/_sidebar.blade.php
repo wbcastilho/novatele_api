@@ -10,7 +10,7 @@
       </li> 
            
       <li>
-        <a href="#">
+        <a href="{{ route('organizations.index') }}">
           <i class="fa fa-fw fa-globe"></i>
           <span>Organizações</span>            
         </a>         
