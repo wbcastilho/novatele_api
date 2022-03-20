@@ -4,9 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Container;
-use App\Item;
-use App\Service;
 
 class MeteringReader extends Model
 {
@@ -20,16 +17,16 @@ class MeteringReader extends Model
 
     public function parent()
     {
-        return $this->belongsTo('Container');
+        return $this->belongsTo('App\Container');
     }
 
     public function service()
     {
-        return $this->belongsTo('Service');
+        return $this->belongsTo('App\Service');
     }
 
     public function items()
     {
-        return $this->belongsToMany('Item', 'items_metering_readers', 'metering_id', 'item_id');
+        return $this->belongsToMany('App\Item', 'items_metering_readers', 'metering_id', 'item_id');
     }
 }

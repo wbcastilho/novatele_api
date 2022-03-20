@@ -3,8 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use \App\Dashboard;
-use \App\Item;
 
 class Fieldset extends Model
 {
@@ -16,11 +14,11 @@ class Fieldset extends Model
 
     public function dashboard()
     {
-        return $this->belongsTo('Dashboard');
+        return $this->belongsTo('App\Dashboard');
     }
 
     public function items()
     {
-        return $this->hasMany('Item');
+        return $this->hasMany('App\Item');
     }
 }

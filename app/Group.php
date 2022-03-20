@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
 
 class Group extends Model
 {
@@ -15,6 +14,6 @@ class Group extends Model
 
     public function users()
     {
-        return $this->hasMany('User');
+        return $this->hasMany('App\User');
     }
 }

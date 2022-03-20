@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Organization;
+use App\User;
 
 class OrganizationController extends Controller
 {
@@ -77,7 +78,15 @@ class OrganizationController extends Controller
      */
     public function show($id)
     {
-        //
+        $breadcrumbs = [
+            ['url'=>'','titulo'=>'Organizações'], 
+            ['url'=>'','titulo'=>'Detalhes'],            
+        ];
+
+        $organization = Organization::find($id); 
+        $users = $organization->users;      
+         
+        return view('organizations.show', compact('organization', 'users', 'breadcrumbs'));
     }
 
     /**

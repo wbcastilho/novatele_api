@@ -3,8 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use \App\Department;
-use \App\Fieldset;
 
 class Dashboard extends Model
 {
@@ -16,11 +14,11 @@ class Dashboard extends Model
 
     public function department()
     {
-        return $this->belongsTo('Department');
+        return $this->belongsTo('App\Department');
     }
 
     public function fieldsets()
     {
-        return $this->hasMany('Fieldset');
+        return $this->hasMany('App\Fieldset');
     }
 }

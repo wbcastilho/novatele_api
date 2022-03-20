@@ -58,7 +58,7 @@
                     <td>{{$organization->id}}</td>
                     <td>{{$organization->name}}</td>           
                     <td>                         
-                        <a href="{{ route('organizations.show',$organization->id) }}" title="Exibir" type="button" class="btn btn-info btn-sm"><i class="fa fa-search-plus"></i></a>                       
+                        <a href="{{ route('organizations.show', $organization->id) }}" title="Exibir" type="button" class="btn btn-info btn-sm"><i class="fa fa-search-plus"></i></a>                       
                     </td>
                 </tr>   
                 @endforeach    
