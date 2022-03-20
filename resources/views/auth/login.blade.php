@@ -21,8 +21,12 @@
       </div> 
       <div class="login-box-body">   
         <h2 style="margin-top: 5px;" class="text-center">Login</h2>
+
+        <form-login :rota="'{{route('login')}}'" :redirect="'{{route('home')}}'">                              
+        
+        </form-login>  
           
-        <form method="POST" action="{{route('login')}}">
+        <!--<form method="POST" action="{{route('login')}}">
           {{ csrf_field() }}
           <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="email">E-mail usuário</label>
@@ -49,7 +53,8 @@
               <strong>{{ $errors->first('password') }}</strong>
           </span>
         @endif
-      </span>
+      </span>-->
+
     </div>
   </div>
   <script src="{{asset('js/app.js')}}"></script>

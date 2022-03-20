@@ -1,11 +1,11 @@
 <template>
     <span>                       
         <form>      
-            <div class="form-group has-feedback" :class="{'has-error' : $v.form.username.$error}">
-                <label for="username">Usuário</label>
-                <input v-model="form.username" @input="limpar()" type="username" class="form-control" name="username">
+            <div class="form-group has-feedback" :class="{'has-error' : $v.form.email.$error}">
+                <label for="email">Usuário</label>
+                <input v-model="form.email" @input="limpar()" type="email" class="form-control" name="email">
                 <span class="fa fa-user form-control-feedback"></span>
-                <small v-if="$v.form.username.$error && !$v.form.username.required" @keyup.enter.stop.prevent class="help-block">*Preenchimento obrigatório</small>                                                                     
+                <small v-if="$v.form.email.$error && !$v.form.email.required" @keyup.enter.stop.prevent class="help-block">*Preenchimento obrigatório</small>                                                                     
             </div>
             <div class="form-group has-feedback" :class="{'has-error' : $v.form.password.$error}">
                 <label for="password">Senha</label>
@@ -42,14 +42,14 @@
                 localRota: '',
                 localRedirect: '', 
                 form: {
-                    username: '',
+                    email: '',
                     password: '',                                    
                 },                                                           
             }
         },
         validations: {
             form: {
-                username: {                                       
+                email: {                                       
                     required,                  
                 },                                             
                 password: {                                       
@@ -74,7 +74,7 @@
                     })
                     .catch(e => {
                         console.log(e);
-                        this.form.username = '';
+                        this.form.email = '';
                         this.form.password = '';
                         this.localMensagem = "Login inválido";
                     });                   

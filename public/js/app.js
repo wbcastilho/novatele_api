@@ -2903,14 +2903,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       localRota: '',
       localRedirect: '',
       form: {
-        username: '',
+        email: '',
         password: ''
       }
     };
   },
   validations: {
     form: {
-      username: {
+      email: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
       },
       password: {
@@ -2946,7 +2946,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   window.location = _this.localRedirect;
                 })["catch"](function (e) {
                   console.log(e);
-                  _this.form.username = '';
+                  _this.form.email = '';
                   _this.form.password = '';
                   _this.localMensagem = "Login inválido";
                 });
@@ -39378,30 +39378,30 @@ var render = function () {
         "div",
         {
           staticClass: "form-group has-feedback",
-          class: { "has-error": _vm.$v.form.username.$error },
+          class: { "has-error": _vm.$v.form.email.$error },
         },
         [
-          _c("label", { attrs: { for: "username" } }, [_vm._v("Usuário")]),
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Usuário")]),
           _vm._v(" "),
           _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.form.username,
-                expression: "form.username",
+                value: _vm.form.email,
+                expression: "form.email",
               },
             ],
             staticClass: "form-control",
-            attrs: { type: "username", name: "username" },
-            domProps: { value: _vm.form.username },
+            attrs: { type: "email", name: "email" },
+            domProps: { value: _vm.form.email },
             on: {
               input: [
                 function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.form, "username", $event.target.value)
+                  _vm.$set(_vm.form, "email", $event.target.value)
                 },
                 function ($event) {
                   return _vm.limpar()
@@ -39412,7 +39412,7 @@ var render = function () {
           _vm._v(" "),
           _c("span", { staticClass: "fa fa-user form-control-feedback" }),
           _vm._v(" "),
-          _vm.$v.form.username.$error && !_vm.$v.form.username.required
+          _vm.$v.form.email.$error && !_vm.$v.form.email.required
             ? _c(
                 "small",
                 {
