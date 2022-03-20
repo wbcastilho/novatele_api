@@ -32,5 +32,4 @@ class MeteringReader extends Model
     {
         return $this->belongsToMany('Item', 'items_metering_readers', 'metering_id', 'item_id');
     }
-
 }

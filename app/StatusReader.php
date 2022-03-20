@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Container;
+use App\Item;
 use App\Service;
 
 class StatusReader extends Model
@@ -25,5 +26,10 @@ class StatusReader extends Model
     public function service()
     {
         return $this->belongsTo('Service');
+    }
+
+    public function items()
+    {
+        return $this->belongsToMany('Item', 'items_status_readers', 'status_id', 'item_id');
     }
 }

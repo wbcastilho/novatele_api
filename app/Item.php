@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use \App\Fieldset;
 use \App\MeteringReader;
+use \App\StatusReader;
 
 class Item extends Model
 {
@@ -22,5 +23,10 @@ class Item extends Model
     public function meteringReaders()
     {
         return $this->belongsToMany('MeteringReader', 'items_metering_readers', 'item_id', 'metering_id');
+    }
+
+    public function statusReaders()
+    {
+        return $this->belongsToMany('StatusReader', 'items_status_readers', 'item_id', 'status_id');
     }
 }
