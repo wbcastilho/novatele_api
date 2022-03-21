@@ -3156,8 +3156,7 @@ var diferenteDeZero = function diferenteDeZero(value) {
   },
   created: function created() {
     this.form.id = this.id;
-  },
-  mounted: function mounted() {}
+  }
 });
 
 /***/ }),
