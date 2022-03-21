@@ -48,6 +48,7 @@
             <tr>          
                 <th style="width: 10px">Cód.</th>
                 <th>Organizações</th>                                                     
+                <th style="width: 80px">Situação</th>                                                     
                 <th style="width: 50px">Ação</th>
             </tr>
         </thead>
@@ -57,6 +58,13 @@
                 <tr>
                     <td>{{$organization->id}}</td>
                     <td>{{$organization->name}}</td>           
+                    <td class="text-center">
+                        @if ($organization->deleted_at === null)
+                            <span class="label label-success">ATIVO</span>
+                        @else
+                            <span class="label label-danger">INATIVO</span>
+                        @endif
+                    </td>           
                     <td>                         
                         <a href="{{ route('organizations.show', $organization->id) }}" title="Exibir" type="button" class="btn btn-info btn-sm"><i class="fa fa-search-plus"></i></a>                       
                     </td>

@@ -35,4 +35,5 @@ Route::group(['middleware' => 'auth','prefix' => '/'], function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('organizations', 'OrganizationController');
+    Route::post('organizations/{id}/reactivate', 'OrganizationController@reactivate');
 }); 

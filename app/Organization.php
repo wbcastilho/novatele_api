@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Organization extends Model
 {
@@ -13,7 +14,17 @@ class Organization extends Model
         'name'        
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at']; 
+    
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y H:i:s');
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y H:i:s');
+    }
 
     public function users()
     {
