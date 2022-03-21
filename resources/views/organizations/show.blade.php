@@ -40,6 +40,21 @@
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-sm-12">                                
             <a href="{{route('organizations.edit', 1)}}" type="button" class="btn btn-sm btn-warning"><i class="fa fa-fw fa-pencil"></i> Editar</a>                                                                                                               
+            @if ($organization->deleted_at === null)
+                <button-delete                                                 
+                    message="Deseja desativar esta organização?"
+                    text="Excluir"
+                    :redirect="'{{ Request::url() }}'"
+                    :route="'{{ route('organizations.index') }}' + '/{{ $organization->id }}'">
+                </button-delete>
+            @else
+                <button-reactivate                                                 
+                    message="Deseja reativar esta organização?"
+                    text="Reativar"
+                    :redirect="'{{ Request::url() }}'"
+                    :route="'{{ route('organizations.index') . '/' . $organization->id . '/reactivate'}}'">
+                </button-reactivate> 
+            @endif
         </div>
     </div> 
 
@@ -83,24 +98,22 @@
                                 <th style="width: 90px">Ação</th>
                             </tr>
                         </thead>
-                        <tbody>                                                        
+                        <tbody> 
                             @if (count($users) > 0)
-                                @foreach($users as $user)
-                                <tr>
-                                    <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>           
-                                    <td>                         
-                                        <a href="#" title="Exibir" type="button" class="btn btn-info btn-sm"><i class="fa fa-search-plus"></i></a>                       
-                                    </td>
-                                </tr>   
-                                @endforeach    
+                                @foreach ($users as $user)                                                       
+                                    <tr>
+                                        <td class="text-center">{{ $user->id }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td></td>
+                                    </tr>  
+                                @endforeach   
                             @else
-                                <tr style="height:45px;">
+                                <tr style="height:35px;">
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
-                            @endif                             
+                            @endif                 
                         </tbody>
                     </table>
                 </div>

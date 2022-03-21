@@ -25,6 +25,7 @@ class OrganizationController extends Controller
         $organizations = Organization::where('name', 'LIKE', '%' . $searchText . '%')
             ->where('id', '>', 1)
             ->orderBy("name","ASC")
+            ->withTrashed()
             ->paginate(10);  
        
         return view('organizations.index', compact('organizations', 'searchText'));
@@ -83,7 +84,7 @@ class OrganizationController extends Controller
             ['url'=>'','titulo'=>'Detalhes'],            
         ];
 
-        $organization = Organization::find($id); 
+        $organization = Organization::withTrashed()->find($id); 
         $users = $organization->users;      
          
         return view('organizations.show', compact('organization', 'users', 'breadcrumbs'));
@@ -120,7 +121,40 @@ class OrganizationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $organization = Organization::find($id);
+        $result = $organization->delete();
+
+        if ($result) {
+            return response()->json([
+                'fail' => false,            
+                'message' => "Organização excluída com sucesso."
+            ]);
+        }
+        else {
+            return response()->json([
+                'fail' => true,            
+                'message' => "Falha ao excluir orgamização."
+            ]); 
+        }
+    }
+
+    public function reactivate($id)
+    {
+        $organization = Organization::onlyTrashed()->find($id);
+        $result = $organization->restore();
+
+        if ($result) {
+            return response()->json([
+                'fail' => false,            
+                'message' => "Organização reativada com sucesso."
+            ]);
+        }
+        else {
+            return response()->json([
+                'fail' => true,            
+                'message' => "Falha ao reativar orgamização."
+            ]); 
+        }
     }
 
     private function validation($requestAll)
