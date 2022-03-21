@@ -83,21 +83,7 @@
                                 <th style="width: 90px">Ação</th>
                             </tr>
                         </thead>
-                        <tbody>                            
-                            <!--<tr>                                
-                                <td class="text-center">1</td>                                
-                                <td>EDIUS</td>                                
-                                <td>
-                                    <button title="Download" class="btn btn-warning btn-sm">
-                                        <i class="fa fa-pencil"></i>                                       
-                                    </button>  
-                                    <button title="Desassociar" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                        <input type="hidden" name="hidDeleteId" value="" class="hidDeleteId">
-                                    </button>  
-                                </td>
-                            </tr>--> 
-
+                        <tbody>                                                        
                             @if (count($users) > 0)
                                 @foreach($users as $user)
                                 <tr>
