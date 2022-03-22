@@ -39,7 +39,7 @@
 @section('content')     
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-sm-12">                                
-            <a href="{{route('organizations.edit', 1)}}" type="button" class="btn btn-sm btn-warning"><i class="fa fa-fw fa-pencil"></i> Editar</a>                                                                                                               
+            <a href="{{route('organizations.edit', $organization->id)}}" type="button" class="btn btn-sm btn-warning"><i class="fa fa-fw fa-pencil"></i> Editar</a>                                                                                                               
             @if ($organization->deleted_at === null)
                 <button-delete                                                 
                     message="Deseja desativar esta organização?"
