@@ -2,7 +2,7 @@
     <span>        
         <form>           
             <div class="box-body">                 
-                <div v-if="form.id > 0" class="row"> 
+                <div v-if="obj != null" class="row"> 
                     <div class="form-group col-md-2 col-sm-2 col-xs-12 ">
                         <label for="id">Cód.</label>
                         <input v-model="form.id" type="text" name="id" class="form-control text-center" disabled/>  
@@ -36,7 +36,7 @@
                         </div>
                         <div class="modal-footer">
                             <a v-if="fail == false" :href="redirect" class="btn btn-primary">Ok</a> 
-                            <button v-else type="button" class="btn btn-primary" @click="fecharModalMensagem()">Ok</button>                       
+                            <button v-else type="button" class="btn btn-primary" @click="closeModalMessage()">Ok</button>                       
                         </div>
                     </div>
                 </div>
@@ -47,15 +47,9 @@
  
 <script> 
     import { required } from "vuelidate/lib/validators"; 
-   
-    const diferenteDeZero = (value) => value != 0;
-
+     
     export default {
-        props: { 
-            id: {
-                type: Number,
-                default: 0
-            },
+        props: {            
             obj: {
                 type: Object
             },            
@@ -87,7 +81,7 @@
             }         
         },
         methods: {
-            fecharModalMensagem: function(){
+            closeModalMessage: function(){
                 this.showMessage = false;                
             },            
             create: async function() {
@@ -113,12 +107,10 @@
                 });  
             },           
             save() {
-                if (this.$v.$invalid) {
-                    this.$v.$touch();                     
-                } 
+                if (this.$v.$invalid)
+                    this.$v.$touch();                                     
                 else {                    
                     this.$v.$reset();
-
                     if(this.obj == null)
                         this.create();                    
                     else

@@ -89,12 +89,17 @@
                     <h6 class="page-header" style="margin-top:15px;">                        
                         Usuários
                     </h6>
-                    <a href="#" type="button" class="btn btn-primary btn-sm" style="margin-bottom: 10px;"><i class="fa fa-plus"></i> Adicionar</a>                      
+                    <button-user 
+                        text="Adicionar"                                                                                                                                                                                            
+                        :redirect="'{{ Request::url() }}'"                        
+                        :route="'{{ route('organizations.adduser', $organization->id) }}'">
+                    </button-user> 
                     <table class="table table-bordered">
                         <thead>
                             <tr>                               
                                 <th style="width:50px;">Cód.</th>                               
                                 <th>Usuário</th>                               
+                                <th>Grupo</th>                               
                                 <th style="width: 90px">Ação</th>
                             </tr>
                         </thead>
@@ -104,11 +109,26 @@
                                     <tr>
                                         <td class="text-center">{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
-                                        <td></td>
+                                        <td>
+                                            {{ $user->group->name }}
+                                        </td>  
+                                        <td>
+                                            <button-user                                                 
+                                                :obj="{{$user}}"                                                                                                                                                
+                                                :redirect="'{{ Request::url() }}'"
+                                                :route="'{{ route('users.update', $user->id)}}'">
+                                            </button-user>                                        
+                                            <button-delete                                                 
+                                                message="Deseja desativar este usuário?"                                                
+                                                :redirect="'{{ Request::url() }}'"
+                                                :route="'{{ route('users.destroy', $user->id) }}'">
+                                            </button-delete>
+                                        </td>
                                     </tr>  
                                 @endforeach   
                             @else
                                 <tr style="height:35px;">
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

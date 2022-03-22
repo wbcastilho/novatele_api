@@ -27,6 +27,7 @@ Vue.component('form-organization', require('./components/forms/FormOrganization.
 
 Vue.component('button-delete', require('./components/buttons/ButtonDelete.vue').default);
 Vue.component('button-reactivate', require('./components/buttons/ButtonReactivate.vue').default);
+Vue.component('button-user', require('./components/buttons/ButtonUser.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

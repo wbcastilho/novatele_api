@@ -34,6 +34,10 @@ Route::post('logout', 'AuthController@logout')->name('logout');
 Route::group(['middleware' => 'auth','prefix' => '/'], function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
+    
     Route::resource('organizations', 'OrganizationController');
-    Route::post('organizations/{id}/reactivate', 'OrganizationController@reactivate');
+    Route::post('organizations/{id}/reactivate', 'OrganizationController@reactivate')->name('organizations.reactivate');
+    Route::post('organizations/{id}/adduser', 'OrganizationUserController@store')->name('organizations.adduser');
+        
+    Route::resource('users', 'UserController');
 }); 
