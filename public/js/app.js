@@ -3332,6 +3332,9 @@ var diferenteDeZero = function diferenteDeZero(value) {
       type: Number,
       "default": 0
     },
+    obj: {
+      type: Object
+    },
     route: {
       type: String,
       required: true
@@ -3425,17 +3428,20 @@ var diferenteDeZero = function diferenteDeZero(value) {
 
       return update;
     }(),
-    salvar: function salvar() {
+    save: function save() {
       if (this.$v.$invalid) {
         this.$v.$touch();
       } else {
         this.$v.$reset();
-        if (this.form.id == 0) this.create();else this.update();
+        if (this.obj == null) this.create();else this.update();
       }
     }
   },
   created: function created() {
-    this.form.id = this.id;
+    if (this.obj != null) {
+      this.form.id = this.obj['id'];
+      this.form.name = this.obj['name'];
+    }
   }
 });
 
@@ -41164,7 +41170,7 @@ var render = function () {
               on: {
                 click: function ($event) {
                   $event.preventDefault()
-                  return _vm.salvar()
+                  return _vm.save()
                 },
               },
             },

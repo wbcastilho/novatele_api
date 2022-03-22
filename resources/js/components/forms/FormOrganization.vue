@@ -19,7 +19,7 @@
                
             </div>  
             <div class="box-footer">
-                <button id="btnSalvar" class="btn btn-success" @click.prevent="salvar()">Salvar</button>
+                <button id="btnSalvar" class="btn btn-success" @click.prevent="save()">Salvar</button>
                 <a style="margin-left:5px;" :href="redirect" id="btnCancelar" class="btn btn-default">Voltar</a>                       
             </div>
         </form> 
@@ -55,6 +55,9 @@
             id: {
                 type: Number,
                 default: 0
+            },
+            obj: {
+                type: Object
             },            
             route: {
                 type: String,
@@ -109,22 +112,25 @@
                     console.log(e);
                 });  
             },           
-            salvar() {
+            save() {
                 if (this.$v.$invalid) {
                     this.$v.$touch();                     
                 } 
                 else {                    
                     this.$v.$reset();
 
-                    if(this.form.id == 0)
+                    if(this.obj == null)
                         this.create();                    
                     else
                         this.update();                                                   
                 }              
             },      
         },
-        created() {                          
-            this.form.id = this.id;                      
+        created() {                                      
+            if (this.obj != null) {                            
+                this.form.id = this.obj['id'];
+                this.form.name = this.obj['name'];                             
+            }   
         }        
     }
 </script>

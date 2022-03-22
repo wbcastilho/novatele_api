@@ -20,7 +20,7 @@ class OrganizationController extends Controller
             ['url'=>'','titulo'=>'Organizações'],                                   
         ];
          
-        $searchText=trim($request->get('searchText'));
+        $searchText = trim($request->get('searchText'));
         
         $organizations = Organization::where('name', 'LIKE', '%' . $searchText . '%')
             ->where('id', '>', 1)
@@ -97,8 +97,15 @@ class OrganizationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {        
+        $breadcrumbs = [          
+            ['url'=>'','titulo'=>'Organizações'],           
+            ['url'=>'','titulo'=>'Alterar']
+        ];
+        
+        $organization = Organization::withTrashed()->find($id);                   
+    
+        return view('organizations.edit', compact('organization', 'breadcrumbs'));
     }
 
     /**
@@ -110,7 +117,29 @@ class OrganizationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validation($request->all());        
+        if($validator->fails())
+        return response()->json([
+            'fail' => true,
+            'errors' => $validator->errors()
+        ], 200);
+               
+        $organization = Organization::withTrashed()->find($id);
+        if($organization == null)
+        {
+            return response()->json([
+                'fail' => true,            
+                'message' => "Organização não encontrada."
+            ]);
+        }
+
+        $organization->name = $request['name'];       
+        $organization->save();
+       
+        return response()->json([
+            'fail' => false,            
+            'message' => "Organização alterada com sucesso."
+        ]);
     }
 
     /**
