@@ -34,12 +34,12 @@
     </a>  
 @endsection 
 
-@section('content')         
-    <form-organization         
-        :obj="{{$organization}}"       
-        :route="'{{ route('organizations.update', $organization->id) }}'" 
-        :redirect="'{{route('organizations.index')}}'">                              
-    </form-organization>                                 
+@section('content')
+    <form-user 
+        :obj="{{$user}}" 
+        :route="'{{ route('root.update', $user->id) }}'" 
+        :redirect="'{{route('root.index')}}'">                              
+    </form-user>                                   
 @endsection
 
 @section('js')

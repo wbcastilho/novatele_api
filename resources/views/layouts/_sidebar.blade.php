@@ -17,7 +17,7 @@
       </li>      
         
       <li>
-        <a href="#">
+        <a href="{{ route('root.index') }}">
           <i class="fa fa-users"></i>
           <span>Usuários</span>                     
         </a>         

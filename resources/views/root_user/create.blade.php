@@ -5,11 +5,11 @@
 @endsection
 
 @section('titulo')
-    Organizações
+    Usuários
 @endsection
 
 @section('subtitulo')
-   Formulário <small>(Alterar)</small>
+   Formulário <small>(Adicionar)</small>
 @endsection
 
 @section('breadcrumb')          
@@ -35,11 +35,10 @@
 @endsection 
 
 @section('content')         
-    <form-organization         
-        :obj="{{$organization}}"       
-        :route="'{{ route('organizations.update', $organization->id) }}'" 
-        :redirect="'{{route('organizations.index')}}'">                              
-    </form-organization>                                 
+    <form-user 
+        :route="'{{route('root.store')}}'" 
+        :redirect="'{{route('root.index')}}'">                              
+    </form-user>                                 
 @endsection
 
 @section('js')

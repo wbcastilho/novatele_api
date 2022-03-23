@@ -40,4 +40,6 @@ Route::group(['middleware' => 'auth','prefix' => '/'], function(){
     Route::post('organizations/{id}/adduser', 'OrganizationUserController@store')->name('organizations.adduser');
         
     Route::resource('users', 'UserController');
+    
+    Route::resource('root', 'RootUserController');
 }); 

@@ -7,16 +7,27 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 
-class UserController extends Controller
+class RootUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $breadcrumbs = [
+            ['url'=>'','titulo'=>'Usuários'],                                   
+        ];
+         
+        $searchText = trim($request->get('searchText'));
+        
+        $users = User::where('name', 'LIKE', '%' . $searchText . '%')            
+            ->where('group_id', '=', 1)
+            ->orderBy("name","ASC")            
+            ->paginate(10);  
+       
+        return view('root_user.index', compact('users', 'searchText'));
     }
 
     /**
@@ -25,8 +36,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
+    { $breadcrumbs = [                     
+        ['url'=>route('root.index'),'titulo'=>'Usuários'],
+        ['url'=>'','titulo'=>'Adicionar']
+    ];
+  
+    return view('root_user.create', compact('breadcrumbs'));
+        //
     }
 
     /**
@@ -37,7 +53,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validator = $this->validation($request->all());        
+        if($validator->fails())
+        return response()->json([
+            'fail' => true,
+            'errors' => $validator->errors()
+        ], 200);                      
+
+        $user = User::create([    
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'group_id' => 1,
+            'password' => Hash::make($request['password'])
+        ]); 
+       
+        return response()->json([
+            'fail' => false,            
+            'message' => "Usuário cadastrado com sucesso."
+        ]);
     }
 
     /**
@@ -59,7 +92,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $breadcrumbs = [          
+            ['url'=>'','titulo'=>'Usuários'],           
+            ['url'=>'','titulo'=>'Alterar']
+        ];
+        
+        $user = User::find($id);                   
+    
+        return view('root_user.edit', compact('user', 'breadcrumbs'));
     }
 
     /**

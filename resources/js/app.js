@@ -24,6 +24,7 @@ Vue.use(Vuelidate);
 
 Vue.component('form-login', require('./components/forms/FormLogin.vue').default);
 Vue.component('form-organization', require('./components/forms/FormOrganization.vue').default);
+Vue.component('form-user', require('./components/forms/FormUser.vue').default);
 
 Vue.component('button-delete', require('./components/buttons/ButtonDelete.vue').default);
 Vue.component('button-reactivate', require('./components/buttons/ButtonReactivate.vue').default);
